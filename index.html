@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>baixo consumo — guia de uso</title>
+  
+  <style>
+    /* reset basico */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #F2EFE9;
+      color: #181918;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      padding: 40px 20px;
+    }
+
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* cabeçalho & marca leonardo menezes */
+    header {
+      border-bottom: 2px solid #181918;
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .lm-signature {
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: #666;
+      border: 1px solid #181918;
+      padding: 2px 8px;
+      background: #FFF;
+    }
+
+    h1 {
+      font-family: Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .sub {
+      color: #555;
+      font-size: 0.98rem;
+    }
+
+    /* bloco de numeros */
+    .numbers {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .num-box {
+      flex: 1;
+      background: #FFF;
+      border: 1px solid #181918;
+      padding: 16px;
+      box-shadow: 3px 3px 0 #181918;
+    }
+
+    .num-box strong {
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      display: block;
+      line-height: 1;
+      margin-bottom: 6px;
+      color: #C04A27;
+    }
+
+    .num-box span {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    /* abas */
+    .nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      background: none;
+      border: 1px solid transparent;
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .tab-btn.active {
+      border-color: #181918;
+      background: #FFF;
+      color: #181918;
+      font-weight: 600;
+      box-shadow: 2px 2px 0 #181918;
+    }
+
+    /* cards */
+    .cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      background: #FFF;
+      border: 1px solid #181918;
+      padding: 20px;
+      box-shadow: 3px 3px 0 #181918;
+    }
+
+    .card.hide { display: none; }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #444;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      font-family: monospace;
+      font-size: 0.72rem;
+      background: #F2EFE9;
+      border: 1px solid #CCC;
+      padding: 2px 6px;
+      color: #333;
+    }
+
+    /* rodape */
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #CCC;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    @media (max-width: 500px) {
+      .numbers { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    
+    <header>
+      <div class="top-bar">
+        <span class="brand">baixo_consumo</span>
+        <span class="lm-signature">design // leonardo menezes</span>
+      </div>
+      <h1>Economia de energia doméstica sem complicação.</h1>
+      <p class="sub">Pequenas trocas de hábito que impactam diretamente a conta no final do mês.</p>
+    </header>
+
+    <div class="numbers">
+      <div class="num-box">
+        <strong>-10%</strong>
+        <span>redução média ajustando apenas a rotina</span>
+      </div>
+      <div class="num-box">
+        <strong>3x</strong>
+        <span>mais eficiência com lâmpadas LED</span>
+      </div>
+      <div class="num-box">
+        <strong>80%</strong>
+        <span>do gasto do banho é o tempo de chuveiro</span>
+      </div>
+    </div>
+
+    <main>
+      <div class="nav-tabs">
+        <button class="tab-btn active" onclick="setRoom('cozinha', this)">cozinha</button>
+        <button class="tab-btn" onclick="setRoom('banheiro', this)">banheiro</button>
+        <button class="tab-btn" onclick="setRoom('sala', this)">sala & quarto</button>
+      </div>
+
+      <div class="cards-list">
+        <!-- cozinha -->
+        <div class="card" data-room="cozinha">
+          <h3>Geladeira e temperatura</h3>
+          <p>Evite guardar alimentos quentes e não abra a porta sem necessidade. O compressor consome o dobro para recuperar o ar frio.</p>
+          <span class="badge">↓ 15% consumo do aparelho</span>
+        </div>
+
+        <div class="card" data-room="cozinha">
+          <h3>Cozinhar com tampa</h3>
+          <p>Tampar as panelas segura o calor interno e acelera o preparo, reduzindo o tempo de uso do gás ou fogão de indução.</p>
+          <span class="badge">↓ 25% no tempo de preparo</span>
+        </div>
+
+        <!-- banheiro -->
+        <div class="card hide" data-room="banheiro">
+          <h3>Tempo de chuveiro</h3>
+          <p>Reduzir o banho em apenas 5 minutos é o ajuste isolado que traz o maior retorno financeiro imediato.</p>
+          <span class="badge">maior impacto da casa</span>
+        </div>
+
+        <div class="card hide" data-room="banheiro">
+          <h3>Chave verão/inverno</h3>
+          <p>Nos dias mais quentes, mude a chave do chuveiro para o modo verão. A economia na resistência é considerável.</p>
+          <span class="badge">até -30% na resistência</span>
+        </div>
+
+        <!-- sala -->
+        <div class="card hide" data-room="sala">
+          <h3>Stand-by de eletrônicos</h3>
+          <p>TVs e consoles em modo de espera continuam puxando energia. Desligue da tomada ou use uma régua com chave.</p>
+          <span class="badge">corta gasto fantasma</span>
+        </div>
+
+        <div class="card hide" data-room="sala">
+          <h3>Ar-condicionado em 23°C</h3>
+          <p>Cada grau abaixo dos 23°C força desnecessariamente o compressor e aumenta o consumo em cerca de 5%.</p>
+          <span class="badge">ponto ideal de consumo</span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>baixo consumo — notas de uso</span>
+      <span>v1.2 // 2026</span>
+    </footer>
+
+  </div>
+
+  <script>
+    // filtro rapido de abas
+    function setRoom(room, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.card').forEach(card => {
+        card.classList.toggle('hide', card.dataset.room !== room);
+      });
+    }
+  </script>
+
+</body>
+</html>
